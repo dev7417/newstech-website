@@ -64,3 +64,20 @@ span{
 .card-button a:last-child{
     color: red;
 }
+
+form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+form .inputBox{
+    margin-bottom: 2rem;
+}
+form .inputBox  input[type= text]{
+    border: none;
+    height: 4rem;
+    width: 50rem;
+    border-radius: 4rem;
+    padding: 0 0.5rem;
+    font-size: 2rem;
+}

@@ -18,7 +18,12 @@ const reducer = (state, action) =>{
                 ...state,
                 hits:state.hits.filter((curElem) => curElem.objectID !== action.payload
                 )
-            }
+            };
+            case "SEARCH_DATA":
+                return{
+                    ...state,
+                    query: action.payload
+                }
     };
     return state;
 };
