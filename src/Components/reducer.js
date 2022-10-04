@@ -11,7 +11,7 @@ const reducer = (state, action) =>{
                 ...state,
                 isLoading: false,
                 hits: action.payload.hits,
-                // nbPages: action.payload.nbPages
+                nbPages: action.payload.nbPages
             };
             case "GET_REMOVE":
             return{
@@ -23,6 +23,18 @@ const reducer = (state, action) =>{
                 return{
                     ...state,
                     query: action.payload
+                };
+                case "GET_NEXT_PAGE":{
+                    return{
+                        ...state,
+                        page: state.page + 1,
+                    }
+                };
+                case "GET_PREV_PAGE":{
+                    return{
+                        ...state,
+                        page: state.page - 1
+                    }
                 }
     };
     return state;

@@ -81,3 +81,19 @@ form .inputBox  input[type= text]{
     padding: 0 0.5rem;
     font-size: 2rem;
 }
+.pagination_btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.pagination_btn button{
+    border: none;
+    background-color: #15133c;
+    color: #fff;
+    padding: 1rem 1rem;
+    margin: 0 1rem;
+    cursor: pointer;
+}
+.pagination_btn span{
+    padding: 0 0.8rem;
+}

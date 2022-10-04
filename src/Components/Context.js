@@ -18,7 +18,7 @@ const AppContext = React.createContext()
 const AppProvider = ({ children }) => {
     const [state, dispatch] = useReducer(reducer, initialState);
 
-
+// Calling Our Api
     const fetchNewsData = async (url) => {
         dispatch({ type: "SET_LOADING" })
         try {
@@ -36,20 +36,29 @@ const AppProvider = ({ children }) => {
             console.log(error)
         }
     }
+    // For Search a Query
     const searchQuery = (searchData) => {
         dispatch({
-            type: "SEARCH_DATA", payload:searchData
+            type: "SEARCH_DATA", payload: searchData
         })
     }
+    // Delete Post
     const removePost = (Post_ID) => {
         dispatch({ type: "GET_REMOVE", payload: Post_ID })
     }
+    // For Next Button
+    const getNextPage = () =>{
+        dispatch({type:"GET_NEXT_PAGE"})
+    }
+    const getPrevPage = () =>{
+        dispatch({type:"GET_PREV_PAGE"})
+    }
     useEffect(() => {
         fetchNewsData(`${Api_url}query=${state.query}&page=${state.page}`);
-    }, [state.query])
+    }, [state.query, state.page])
 
     return (
-        <AppContext.Provider value={{ ...state, removePost, searchQuery }}> {children}</AppContext.Provider>
+        <AppContext.Provider value={{ ...state, removePost,  searchQuery, getNextPage, getPrevPage }}> {children}</AppContext.Provider>
     )
 
 }
