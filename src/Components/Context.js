@@ -5,6 +5,7 @@ import reducer from "./reducer";
 let Api_url = "https://hn.algolia.com/api/v1/search?";
 
 const initialState = {
+    isLoading: true,
     query: "Css",
     nbPages: 0,
     page: 0,
@@ -19,6 +20,7 @@ const AppProvider = ({ children }) => {
 
 
     const fetchNewsData = async (url) => {
+        dispatch({type:"SET_LOADING"})
         try {
             const res = await fetch(url);
             const data = await res.json();
