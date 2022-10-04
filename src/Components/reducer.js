@@ -25,16 +25,31 @@ const reducer = (state, action) =>{
                     query: action.payload
                 };
                 case "GET_NEXT_PAGE":{
+                    let nxtpageNum = state.page + 1;
+                    if(nxtpageNum > state.nbPages){
+                        nxtpageNum = 0;
+                    }else{
+
+                    
                     return{
                         ...state,
-                        page: state.page + 1,
+                        page: nxtpageNum,
                     }
+                }
                 };
                 case "GET_PREV_PAGE":{
+                    let pageNum = state.page;
+                    if(pageNum <= 0){
+                        pageNum = 0
+                    }else{
+                        pageNum = pageNum - 1;
+                    }
+                    
                     return{
                         ...state,
-                        page: state.page - 1
-                    }
+                        page: pageNum,
+                   
+                }
                 }
     };
     return state;
