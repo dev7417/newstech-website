@@ -36,12 +36,15 @@ const AppProvider = ({ children }) => {
             console.log(error)
         }
     }
+    const removePost = (Post_ID) =>{
+        dispatch({type:"GET_REMOVE", payload:Post_ID})
+    }
     useEffect(() => {
         fetchNewsData(`${Api_url}query=${state.query}&page=${state.page}`);
     }, [])
 
     return (
-        <AppContext.Provider value={{ ...state }}> {children}</AppContext.Provider>
+        <AppContext.Provider value={{ ...state, removePost }}> {children}</AppContext.Provider>
     )
 
 }

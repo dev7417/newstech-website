@@ -3,7 +3,7 @@ import { useGlobal } from './Context';
 
 
 export default function Stories() {
-    const { hits, nbPages, isLoading } = useGlobal();
+    const { hits, nbPages, isLoading, removePost } = useGlobal();
     if (isLoading) {
         return (
             <>
@@ -11,29 +11,33 @@ export default function Stories() {
             </>
         );
     }
+
     return (
         <>
-            <h2>My Tech News Post</h2>
-            {hits.map((item, id) => {
-                const { author, title, url, num_comments, objectID } = item;
-                return <>
-                    <div className='stories_div'>
+            
+            <div className='stories_div'>
+                {hits.map((item, id) => {
+                    const { author, title, url, num_comments, objectID } = item;
 
-                        <div className='card'>
+
+
+                    return <>
+
+                        <div className='card' key={objectID}>
                             <h2>{title}</h2>
                             <p>
                                 By {author} | <span>{num_comments}</span> comments
                             </p>
                             <div className='card-button'>
                                 <a href={url} target="_blank">Read More</a>
-                                <a href="#">Remove</a>
+                                <a href="#" onClick={()=>removePost(objectID)}>Remove</a>
                             </div>
                         </div>
-                    </div>
 
-                </>
-            })}
+                    </>
+                })}
 
+            </div>
         </>
     )
 }

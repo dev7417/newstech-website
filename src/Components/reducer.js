@@ -1,5 +1,6 @@
 const reducer = (state, action) =>{
     switch (action.type){
+        
         case "SET_LOADING":
             return {
                 ...state,
@@ -12,6 +13,12 @@ const reducer = (state, action) =>{
                 hits: action.payload.hits,
                 // nbPages: action.payload.nbPages
             };
+            case "GET_REMOVE":
+            return{
+                ...state,
+                hits:state.hits.filter((curElem) => curElem.objectID !== action.payload
+                )
+            }
     };
     return state;
 };
